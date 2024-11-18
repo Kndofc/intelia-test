@@ -1,6 +1,3 @@
-Aqui está o README atualizado com informações de configuração do Docker para o backend:
-
-```markdown
 # Teste Técnico - Intelia
 
 Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Desenvolvedor Full Stack Júnior na **Intelia**. O objetivo é implementar um formulário de cadastro dividido em três etapas, com salvamento progressivo no banco de dados, validações e máscaras nos campos.
