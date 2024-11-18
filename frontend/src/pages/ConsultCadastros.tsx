@@ -54,7 +54,7 @@ const ConsultCadastros: React.FC<{ onBackToHome: () => void }> = ({ onBackToHome
     try {
       const response = await api.get('/users', { params: { page: currentPage } });
       setUsers(response.data.data);
-      setTotalPages(response.data.meta.pages); // Atualiza o total de páginas baseado na resposta do backend
+      setTotalPages(response.data.meta.pages);
     } catch (error) {
       console.error('Erro ao buscar cadastros:', error);
     } finally {

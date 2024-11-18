@@ -40,7 +40,7 @@ const Step2: React.FC<Step2Props> = ({ userId, onNext }) => {
         number: parseInt(formData.number),
       });
       setSnackbar({ open: true, message: 'Etapa 2 concluída com sucesso!', severity: 'success' });
-      onNext(); // Apenas uma chamada
+      onNext();
     } catch (error) {
       setSnackbar({ open: true, message: 'Erro ao enviar os dados.', severity: 'error' });
       console.error('Erro ao enviar os dados:', error);
