@@ -22,10 +22,15 @@ const Step2: React.FC<Step2Props> = ({ userId, onNext }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    if (name === 'state' && value.length > 2) return;
+  
+    if (name === 'state') {
+      const regex = /^[A-Za-z]{0,2}$/;
+      if (!regex.test(value)) return;
+    }
+  
     setFormData({ ...formData, [name]: value });
   };
-
+  
   const handleSubmit = async () => {
     if (!formData.street || !formData.number || !formData.zip_code || !formData.city || !formData.state) {
       setSnackbar({ open: true, message: 'Preencha todos os campos obrigatórios.', severity: 'error' });

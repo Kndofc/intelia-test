@@ -13,8 +13,15 @@ const Step1: React.FC<Step1Props> = ({ onNext }) => {
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const { name, value } = e.target;
+  
+    if (name === 'name') {
+      const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/;
+      if (!regex.test(value)) return;
+    }
+  
+    setFormData({ ...formData, [name]: value });
+  };  
 
   const handleSubmit = async () => {
     if (!formData.name || !formData.birthdate) {
