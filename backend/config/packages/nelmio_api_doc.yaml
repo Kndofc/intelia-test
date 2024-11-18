@@ -1,0 +1,11 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: 'Documentação da API'
+            description: 'Documentação gerada automaticamente com Swagger para a API de cadastro.'
+            version: '1.0.0'
+    areas:
+        path_patterns:
+            - ^/api(?!/doc$)
+    models:
+        use_jms: false
