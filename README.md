@@ -1,3 +1,6 @@
+Aqui está o README atualizado com informações de configuração do Docker para o backend:
+
+```markdown
 # Teste Técnico - Intelia
 
 Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Desenvolvedor Full Stack Júnior na **Intelia**. O objetivo é implementar um formulário de cadastro dividido em três etapas, com salvamento progressivo no banco de dados, validações e máscaras nos campos.
@@ -51,7 +54,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Des
 - PHP 8.1
 - Symfony 6.2
 - Doctrine ORM
-- MySQL
+- MySQL/PostgreSQL
 
 ### Testes
 - PHPUnit
@@ -59,31 +62,38 @@ Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Des
 
 ---
 
-## Instruções de Implantação
+## Instruções de Implantação com Docker
 
-### Requisitos
-- **Frontend**: Node.js (>= 18) e npm/yarn
-- **Backend**: PHP 8.1, Composer, MySQL, Symfony CLI
+### Configuração do Docker
+A configuração do Docker está no diretório do backend.
 
-### Configuração do Banco de Dados
-Execute o script abaixo para criar a estrutura do banco de dados:
-```sql
-CREATE DATABASE intelia_test;
-USE intelia_test;
+1. Certifique-se de ter o Docker e o Docker Compose instalados.
+2. Use os arquivos `compose.yaml` e `compose.override.yaml` para configurar os serviços.
 
-CREATE TABLE user_registration (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    birthdate DATE NOT NULL,
-    street VARCHAR(255) DEFAULT NULL,
-    number INT DEFAULT NULL,
-    zip_code VARCHAR(8) DEFAULT NULL,
-    city VARCHAR(255) DEFAULT NULL,
-    state VARCHAR(2) DEFAULT NULL,
-    phone VARCHAR(255) DEFAULT NULL,
-    mobile VARCHAR(255) DEFAULT NULL
-);
+**Comando para subir os serviços:**
+```bash
+docker-compose up -d
 ```
+
+### Serviços Disponíveis
+- **PostgreSQL**: Banco de dados com persistência configurada.
+- **Mailer (Mailpit)**: Servidor SMTP para testes de envio de e-mails.
+
+**Configuração do `.env` para o backend:**
+```dotenv
+DATABASE_URL="postgresql://app:!ChangeMe!@database:5432/app?serverVersion=16&charset=utf8"
+MAILER_DSN=smtp://mailer:1025
+```
+
+### Acessando os Serviços
+- **Backend**: [http://localhost:8000](http://localhost:8000)
+- **Mailpit (Teste de E-mails)**: [http://localhost:8025](http://localhost:8025)
+
+---
+
+## Configuração Manual
+
+Caso opte por não utilizar Docker, siga os passos abaixo.
 
 ### Backend
 1. Clone o repositório:
@@ -134,12 +144,6 @@ CREATE TABLE user_registration (
    ```bash
    npm start
    ```
-
----
-
-### Acessando o Sistema
-- **Frontend**: [https://cafe.autonomus.app/](https://cafe.autonomus.app/)
-- **Backend**: [https://new.autonomus.app](https://new.autonomus.app)
 
 ---
 
@@ -195,4 +199,3 @@ Caso tenha dúvidas, entre em contato:
 - **Nome**: Kauan Lopes
 - **E-mail**: kauan.lopess@outlook.com
 - **Telefone**: (11) 96211-4156
-```
